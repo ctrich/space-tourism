@@ -325,7 +325,7 @@ select {
 /* Primary header */
 
 .logo {
-  margin: 1.5rem clamp(1.5rem, 10vw, 3.5rem);
+  margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
 }
 
 .primary-header {
@@ -334,7 +334,7 @@ select {
 }
 
 .primary-navigation {
-  --gap: clamp(1rem, 5vw, 3rem);
+  --gap: clamp(1.5rem, 5vw, 3.5rem);
   --underline-gap: 2rem;
   list-style-type: none;
   padding: 0;
@@ -409,13 +409,37 @@ select {
   }
 }
 
-@media (min-width: 35em) and (max-width: 45em) {
+@media (min-width: 35em) {
   .primary-navigation {
-    padding-inline: 3rem;
+    padding-inline: clamp(3rem, 5vw, 6rem);
   }
+}
 
+@media (min-width: 35em) and (max-width: 44.999em) {
   .primary-navigation a > span {
     display: none;
+  }
+}
+
+@media (min-width: 45em) {
+  .primary-header::before {
+    content: "";
+    display: block;
+    position: relative;
+    z-index: 10;
+    left: 3rem;
+    height: 1px;
+    width: 100%;
+    background-color: hsl(var(--clr-white) / 0.5);
+    order: 1;
+  }
+
+  nav {
+    order: 2;
+  }
+
+  .primary-navigation {
+    margin-block: 2rem;
   }
 }
 
